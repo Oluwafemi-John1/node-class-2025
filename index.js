@@ -44,7 +44,7 @@ const cities = [
         country: "Kenya",
         landmass: "696 km²",
         landmark: "Nairobi National Park",
-        picture: "nairobi.jpg"
+        picture: "https://www.micato.com/wp-content/uploads/2018/09/Nairobi_Skyline-1110x700.jpg"
     },
     {
         name: "Addis Ababa",
@@ -52,7 +52,7 @@ const cities = [
         country: "Ethiopia",
         landmass: "527 km²",
         landmark: "Holy Trinity Cathedral",
-        picture: "addis_ababa.jpg"
+        picture: "https://in-addis.com/wp-content/uploads/2024/11/bole.jpeg"
     },
     {
         name: "Casablanca",
@@ -60,7 +60,7 @@ const cities = [
         country: "Morocco",
         landmass: "220 km²",
         landmark: "Hassan II Mosque",
-        picture: "casablanca.jpg"
+        picture: "https://www.visitmorocco.com/sites/default/files/styles/thumbnail_events_slider/public/thumbnails/image/city-panorama.-casablanca-morocco.-africa-marianna-ianovska.jpg?itok=h4FjZSIp"
     },
     {
         name: "Accra",
