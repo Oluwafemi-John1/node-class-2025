@@ -20,7 +20,7 @@ const cities = [
         country: "Egypt",
         landmass: "606 km²",
         landmark: "Pyramids of Giza",
-        picture: "cairo.jpg"
+        picture: "https://media.cntraveler.com/photos/655cdf1d2d09a7e0b27741b5/16:9/w_2560%2Cc_limit/Cairo%2520Egypt_GettyImages-1370918272.jpg"
     },
     {
         name: "Kinshasa",
@@ -28,7 +28,7 @@ const cities = [
         country: "Democratic Republic of the Congo",
         landmass: "9,965 km²",
         landmark: "Lola ya Bonobo",
-        picture: "kinshasa.jpg"
+        picture: "https://cdn.britannica.com/94/196694-050-7C9D009B/Boulevard-du-30-Juin-street-Kinshasa-Democratic.jpg"
     },
     {
         name: "Johannesburg",
@@ -36,7 +36,7 @@ const cities = [
         country: "South Africa",
         landmass: "1,645 km²",
         landmark: "Apartheid Museum",
-        picture: "johannesburg.jpg"
+        picture: "https://lagostojozi.com/wp-content/uploads/2019/01/johannesburg-408643_1280.jpg"
     },
     {
         name: "Nairobi",
