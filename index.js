@@ -2,7 +2,8 @@
 // const app = express()
 
 const app = require('express')()
-const port = 5454
+require('dotenv').config()
+const port = process.env.PORT
 
 
 
