@@ -3,7 +3,16 @@
 
 const app = require('express')()
 require('dotenv').config()
+const mongoose = require('mongoose')
 const port = process.env.PORT || 5400
+
+mongoose.connect(URI)
+.then(()=>{
+    console.log('Lift off!, database neural handshake completed');
+})
+.catch((err)=>{
+    console.log(err);
+})
 
 const cities = [
     {
@@ -169,7 +178,9 @@ const cities = [
 ];
 
 app.get('/',(req,res)=>{
-    res.send('working')
+    // res.send('working')
+    res.sendFile(__dirname+'/public/index.html')
+    // res.send(__dirname)
 })
 
 app.get('/api', (req, res) => {
