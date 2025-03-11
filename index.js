@@ -5,6 +5,7 @@ const app = require('express')()
 require('dotenv').config()
 const mongoose = require('mongoose')
 const port = process.env.PORT || 5400
+const URI = process.env.uri || undefined
 
 mongoose.connect(URI)
 .then(()=>{
