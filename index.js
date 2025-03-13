@@ -4,6 +4,10 @@
 const app = require('express')()
 require('dotenv').config()
 const mongoose = require('mongoose')
+require('ejs')
+app.set('view engine', 'ejs')
+
+
 const port = process.env.PORT || 5400
 const URI = process.env.uri || undefined
 
@@ -180,8 +184,9 @@ const cities = [
 
 app.get('/',(req,res)=>{
     // res.send('working')
-    res.sendFile(__dirname+'/public/index.html')
+    // res.sendFile(__dirname+'/public/index.html')
     // res.send(__dirname)
+    res.render('index', {title: 'First EJS page', name:'Oluwakemi', score: 42})
 })
 
 app.get('/api', (req, res) => {
