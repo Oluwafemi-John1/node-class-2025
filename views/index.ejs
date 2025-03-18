@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <%= title %>
-    </title>
-</head>
-
-<body>
+    <%- include('partials/navbar') %>
     <h1>Hello <%= name %>,</h1>
 
     <% if (name == 'Oluwafemi') { %>
@@ -23,6 +12,5 @@
     <% } else if (score >= 40 && score < 45) { %>
         <h3>Lagbaja tried small</h3>
     <% } %>
-</body>
-
-</html>
+    <a href="/signup">Go to sign up</a>
+    <%- include('partials/footer') %>

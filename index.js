@@ -10,14 +10,15 @@ app.set('view engine', 'ejs')
 
 const port = process.env.PORT || 5400
 const URI = process.env.uri || undefined
+let info;
 
 mongoose.connect(URI)
-.then(()=>{
-    console.log('Lift off!, database neural handshake completed');
-})
-.catch((err)=>{
-    console.log(err);
-})
+    .then(() => {
+        console.log('Lift off!, database neural handshake completed');
+    })
+    .catch((err) => {
+        console.log(err);
+    })
 
 const cities = [
     {
@@ -182,11 +183,30 @@ const cities = [
     }
 ];
 
-app.get('/',(req,res)=>{
+
+app.get('/', (req, res) => {
     // res.send('working')
     // res.sendFile(__dirname+'/public/index.html')
     // res.send(__dirname)
-    res.render('index', {title: 'First EJS page', name:'Oluwakemi', score: 42})
+    res.render('index', { title: 'First EJS page', name: 'Oluwakemi', score: 42 })
+})
+
+app.get('/signup', (req, res) => {
+    res.render('pages/signup')
+})
+
+app.get('/signin', (req, res) => {
+    res.render('pages/signin')
+})
+
+app.get('/dashboard', (req, res) => {
+    fetch('https://second-class.vercel.app/api')
+        .then(res => res.json())
+        .then((data) => {
+            console.log(data)
+            res.render('pages/dashboard', { data })
+        })
+        .catch(err => console.log(err))
 })
 
 app.get('/api', (req, res) => {
