@@ -1,16 +1,19 @@
-// const express = require('express')
+const express = require('express')
 // const app = express()
 
 const app = require('express')()
 require('dotenv').config()
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
+const Users = require('./models/userModel')
 require('ejs')
 app.set('view engine', 'ejs')
-
+app.use(express.json())
+app.use(bodyParser.urlencoded({extended: true}))
 
 const port = process.env.PORT || 5400
 const URI = process.env.uri || undefined
-let info;
+
 
 mongoose.connect(URI)
     .then(() => {
@@ -19,6 +22,18 @@ mongoose.connect(URI)
     .catch((err) => {
         console.log(err);
     })
+
+app.post('/signup', async(req, res) => {
+    try {
+        const {name, email, age, password} = req.body
+        const newUser = new Users({name, email, age, password})
+        await newUser.save()
+        res.status(201).json({message: 'Data added successfully', user:newUser})
+    } catch(err) {
+        console.log(err);
+        res.status(501).json({error: err.message})
+    }
+})
 
 const cities = [
     {
@@ -182,6 +197,7 @@ const cities = [
         picture: "yaounde.jpg"
     }
 ];
+
 
 
 app.get('/', (req, res) => {
