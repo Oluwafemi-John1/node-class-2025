@@ -5,11 +5,12 @@ const app = require('express')()
 require('dotenv').config()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const nodeMailer = require('nodemailer')
 const Users = require('./models/userModel')
 require('ejs')
 app.set('view engine', 'ejs')
 app.use(express.json())
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 const port = process.env.PORT || 5400
 const URI = process.env.uri || undefined
@@ -23,16 +24,21 @@ mongoose.connect(URI)
         console.log(err);
     })
 
-app.post('/signup', async(req, res) => {
+app.post('/signup', async (req, res) => {
     try {
-        const {name, email, age, password} = req.body
-        const newUser = new Users({name, email, age, password})
+        const { name, email, age, password } = req.body
+        const newUser = new Users({ name, email, age, password })
         await newUser.save()
-        res.status(201).json({message: 'Data added successfully', user:newUser})
-    } catch(err) {
+        res.status(201).json({ message: 'Data added successfully', user: newUser })
+    } catch (err) {
         console.log(err);
-        res.status(501).json({error: err.message})
+        res.status(501).json({ error: err.message })
     }
+})
+
+app.get('/allusers', () => {
+    const data = Users.find()
+    console.log(data);
 })
 
 const cities = [
@@ -229,6 +235,32 @@ app.get('/api', (req, res) => {
     res.send(cities)
 })
 
+
+app.get('/mail', (req, res) => {
+    // res.send('I wanna send mail')
+    const transporter = nodeMailer.createTransport({
+        service: process.env.SERVICE,
+        auth: {
+            user: process.env.USER_G,
+            pass: process.env.PASS_G
+        }
+    })
+
+    const mailOptions = {
+        from: 'YOURSELF 👻 "<oyeniranoluwafemi36@gmail.com>"',
+        to: 'devfemi3@gmail.com',
+        subject: 'Debug complete',
+        text: ' A town hall different from bala blu, blue blu bulaba. broom broom broom brooooooooom. Bala blu blue blu bulaba. The farmers will make more money. Your lunch will not be imported, cassava garri ewa and ehhh ehhhhnn. The farmer will make money, the dinner would be cassava, eba, ewa and everything.',
+    }
+    transporter.sendMail(mailOptions)
+        .then((result) => {
+            res.status(201).json({message: 'success'})
+            console.log(result);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+})
 
 app.listen(port, () => {
     console.log(`server started at port: ${port}`);
