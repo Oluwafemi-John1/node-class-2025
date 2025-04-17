@@ -14,7 +14,7 @@ const sendMail = (req, res) => {
 
     const mailOptions = {
         from: 'BAKER\'S DELIGHT 👻 "<oluwafemijohn1000@gmail.com>"',
-        to: 'devfemi3@gmail.com',
+        to: ['devfemi3@gmail.com', 'ogunbunmijoshua60@gmail.com', 'ajiboyecaroline95@gmail.com', 'joshuaagboola2022@gmail.com', 'preciousvictoria697@gmail.com'],
         subject: 'Debug complete with HTML',
         // text: ' A town hall different from bala blu, blue blu bulaba. broom broom broom brooooooooom. Bala blu blue blu bulaba. The farmers will make more money. Your lunch will not be imported, cassava garri ewa and ehhh ehhhhnn. The farmer will make money, the dinner would be cassava, eba, ewa and everything.',
         html: `
