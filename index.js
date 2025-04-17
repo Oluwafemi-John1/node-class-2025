@@ -247,14 +247,56 @@ app.get('/mail', (req, res) => {
     })
 
     const mailOptions = {
-        from: 'YOURSELF 👻 "<oyeniranoluwafemi36@gmail.com>"',
+        from: 'AGAIN YOURSELF 👻 "<oyeniranoluwafemi36@gmail.com>"',
         to: 'devfemi3@gmail.com',
-        subject: 'Debug complete',
-        text: ' A town hall different from bala blu, blue blu bulaba. broom broom broom brooooooooom. Bala blu blue blu bulaba. The farmers will make more money. Your lunch will not be imported, cassava garri ewa and ehhh ehhhhnn. The farmer will make money, the dinner would be cassava, eba, ewa and everything.',
+        subject: 'Debug complete with HTML',
+        // text: ' A town hall different from bala blu, blue blu bulaba. broom broom broom brooooooooom. Bala blu blue blu bulaba. The farmers will make more money. Your lunch will not be imported, cassava garri ewa and ehhh ehhhhnn. The farmer will make money, the dinner would be cassava, eba, ewa and everything.',
+        html: `
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Welcome to African Cities App</title>
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+                </head>
+                <body style="background-color: #f8f9fa; margin: 0; font-family: Arial, sans-serif;">
+                    <nav style="background-color: #0d6efd; padding: 1rem 0;">
+                        <div style="max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;">
+                            <a href="#" style="color: #fff; font-size: 1.5rem; text-decoration: none; font-weight: bold;">African Cities</a>
+                            <div>
+                                <a href="/signup" style="color: #0d6efd; background: #fff; border: 1px solid #fff; padding: 0.5rem 1rem; border-radius: 0.25rem; text-decoration: none; margin-right: 0.5rem;">Sign Up</a>
+                                <a href="/signin" style="color: #0d6efd; background: #fff; border: 1px solid #fff; padding: 0.5rem 1rem; border-radius: 0.25rem; text-decoration: none;">Sign In</a>
+                            </div>
+                        </div>
+                    </nav>
+                    <div style="max-width: 900px; margin: 2rem auto;">
+                        <div style="text-align: center; margin-bottom: 2rem;">
+                            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Welcome to the African Cities App</h1>
+                            <p style="font-size: 1.25rem; color: #555;">Explore major cities in Africa and learn interesting facts about them.</p>
+                            <a href="/dashboard" style="display: inline-block; background: #198754; color: #fff; padding: 0.75rem 2rem; border-radius: 0.3rem; font-size: 1.1rem; text-decoration: none; margin-top: 1rem;">View Dashboard</a>
+                        </div>
+                        <div style="display: flex; justify-content: center;">
+                            <div style="width: 100%; max-width: 600px; background: #fff; border-radius: 0.5rem; box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);">
+                                <div style="padding: 2rem;">
+                                    <h5 style="font-size: 1.25rem; margin-bottom: 1rem;">About This App</h5>
+                                    <p style="color: #333;">
+                                        This application provides information about 20 major cities in Africa, including their population, country, landmass, and famous landmarks. You can sign up to access more features or view the dashboard to see all cities.
+                                    </p>
+                                    <ul style="list-style: none; padding: 0; margin: 0;">
+                                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">Built with <b>Node.js</b> and <b>Express</b></li>
+                                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">Uses <b>MongoDB</b> for user data</li>
+                                        <li style="padding: 0.5rem 0;">Styled with <b>Inline CSS</b></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </body>
+                </html>
+            `
     }
     transporter.sendMail(mailOptions)
         .then((result) => {
-            res.status(201).json({message: 'success'})
+            res.status(201).json({ message: 'success' })
             console.log(result);
         })
         .catch((err) => {
