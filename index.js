@@ -8,6 +8,7 @@ const bodyParser = require('body-parser')
 const Users = require('./models/userModel')
 const Mailer = require('./controllers/sendMail')
 const cities = require('./controllers/cities')
+const FileUpload = require('./controllers/fileUpload')
 require('ejs')
 app.set('view engine', 'ejs')
 app.use(express.json())
@@ -74,6 +75,7 @@ app.get('/api', (req, res) => {
 
 
 app.get('/mail', Mailer)
+app.get('/upload', FileUpload)
 
 app.listen(port, () => {
     console.log(`server started at port: ${port}`);
