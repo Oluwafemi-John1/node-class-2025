@@ -4,6 +4,8 @@ const express = require('express')
 const app = require('express')()
 require('dotenv').config()
 const mongoose = require('mongoose')
+const multer = require('multer')
+const upload = multer({ dest: 'uploads/' })
 const bodyParser = require('body-parser')
 const Users = require('./models/userModel')
 const Mailer = require('./controllers/sendMail')
@@ -73,9 +75,11 @@ app.get('/api', (req, res) => {
     res.send(cities)
 })
 
-
+app.get('/files', (req,res)=>{
+    res.render('pages/upload')
+})
 app.get('/mail', Mailer)
-app.get('/upload', FileUpload)
+app.post('/upload', upload.single('media'), FileUpload)
 
 app.listen(port, () => {
     console.log(`server started at port: ${port}`);
