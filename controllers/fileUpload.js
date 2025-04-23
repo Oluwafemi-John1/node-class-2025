@@ -9,13 +9,13 @@ cloudinary.config({
 });
 
 const fileUpload = async (req, res) => {
-    console.log(req.file);
+    console.log(req.file.originalname);
 
     
     // const url = 'https://res.cloudinary.com/demo/image/upload/getting-started/shoes.jpg'
     try {
         const uploadResult = await cloudinary.uploader
-            .upload(req.file.path , {public_id: req.file.originalname.split('.')[0],})
+            .upload(req.file.path, {public_id: req.file.originalname.split('.')[0],})
             .catch((error) => {
                 console.log(error);
                 res.status(401).json({message: 'File upload failed'})
